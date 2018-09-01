@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,27 @@ public class MainActivity extends AppCompatActivity implements RecyclerView_Clic
         });
         this.CreateDataAgenda();
         this.LoadRecyclerView();
+        Toast.makeText(this, "On Create", Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "On Start", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "On Pause", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "On Resume", Toast.LENGTH_LONG).show();
+    }
+
     private void CreateDataAgenda(){
         listaAgenda =  new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -51,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerView_Clic
         DetalleAgendaRV.setAdapter(adapterAgenda);
         adapterAgenda.setClickListener(this);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
